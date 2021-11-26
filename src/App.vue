@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div v-if="!loggedIn" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <router-link to="/login" class="nav-link">Login</router-link>
+        </li>
+      </div>
+
+      <div v-if="loggedIn" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <router-link to="/contacts" class="nav-link">Contacts</router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" @click.prevent="logout">Logout</a>
+        </li>
+      </div>
+    </nav>
+
+    <div>
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {},
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
