@@ -17,19 +17,29 @@
       </div>
     </nav>
 
-    <div>
+    <div class="pt-md-4">
       <router-view></router-view>
     </div>
+
+    <div id="modals"></div>
   </div>
 </template>
 
 <script>
+import AuthService from './services/authService';
+
 export default {
   name: 'App',
   components: {},
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  methods: {
+    logout() {
+      AuthService.logout();
+      this.$router.push('/login');
     }
   }
 }

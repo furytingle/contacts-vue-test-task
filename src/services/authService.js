@@ -18,7 +18,7 @@ class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('personal_access_token')
+        localStorage.removeItem('personal_access_token');
     }
 }
 

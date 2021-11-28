@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 const Login = () => import('../components/Login')
 const ContactIndex = () => import('../components/Contact/Index')
+const ContactCreate = () => import('../components/Contact/Create')
 const HelloWorld = () => import('../components/HelloWorld')
 
 const routes = [
@@ -15,6 +16,10 @@ const routes = [
     {
         path: '/contacts',
         component: ContactIndex
+    },
+    {
+        path: '/contacts/create',
+        component: ContactCreate
     }
 ];
 
